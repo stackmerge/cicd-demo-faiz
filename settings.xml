@@ -1,6 +1,11 @@
 <settings>
 	<servers>
 		<server>
+			<id>Repository</id>
+			<username>~~~Token~~~</username>
+			<password>Token</password>
+		</server>
+		<server>
 			<id>anypoint.connectedapp</id>
 			<username>~~~Client~~~</username>
 			<password>client_id~?~client_Secret</password>
@@ -10,6 +15,11 @@
 			<id>anypoint-exchange-v3</id>
 			<username>~~~Client~~~</username>
 			<password>client_id~?~client_Secret</password>
+		</server>
+		<server>
+			<id>anypoint.credentials</id>
+			<username>mule-ace-academy</username>
+			<password>password</password>
 		</server>
 	</servers>
 </settings>
