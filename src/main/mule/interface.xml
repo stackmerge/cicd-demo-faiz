@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd 
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+
+	<flow name="sbi-bank-restful-api-main">
+		<http:listener
+			config-ref="sbi-bank-restful-api-httpListenerConfig"
+			path="/api/*">
+			<http:response statusCode="#[vars.httpStatus default 200]">
+				<http:headers>#[vars.outboundHeaders default {}]</http:headers>
+			</http:response>
+			<http:error-response statusCode="#[vars.httpStatus default 500]">
+				<http:body>#[payload]</http:body>
+				<http:headers>#[vars.outboundHeaders default {}]</http:headers>
+			</http:error-response>
+		</http:listener>
+		<apikit:router config-ref="sbi-bank-restful-api-config" />
+	</flow>
+	<flow name="get:\accounts:sbi-bank-restful-api-config">
+		<flow-ref doc:name="Flow Reference" doc:id="e00b01ea-4422-4d25-af8c-9623c50eee63" name="getAccounts" />
+	</flow>
+	<flow name="post:\accounts:application\json:sbi-bank-restful-api-config">
+		<flow-ref doc:name="Flow Reference" doc:id="82a59ddf-f3e6-42ca-9335-debefc73c062" name="createAccounts" />
+	</flow>
+	<flow name="post:\customers:application\json:sbi-bank-restful-api-config">
+		<flow-ref doc:name="Flow Reference" doc:id="0afcf42a-9571-461d-833c-debb4713d8a2" name="createCustomers" />
+	</flow>
+</mule>

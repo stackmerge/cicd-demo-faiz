@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="health-checkFlow" doc:id="acd03d10-40ca-4fea-8652-fd2666a538bb" >
+		<http:listener doc:name="GET /ping" doc:id="44574d38-53ca-493e-baf2-c8301046a2a7" config-ref="sbi-bank-restful-api-httpListenerConfig" path="/ping"/>
+		<set-payload value="#['SFDC Host : ' ++ p('sfdc.host')]" doc:name="Set Payload" doc:id="4db4846f-a945-44ff-8e6f-a7668eb88d40" />
+	</flow>
+</mule>

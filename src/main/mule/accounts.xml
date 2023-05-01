@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="createAccounts" doc:id="d61b298d-2733-4a53-9622-cf67efaf1a0f" >
+		<ee:transform>
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+  message: "Account created successfully"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getAccounts" doc:id="0bea8634-169a-4dc3-9d4c-f775d666962a" >
+		<ee:transform>
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+[
+  {
+    AccountId: "22289",
+    Status: "Enabled",
+    StatusUpdateDateTime: "2019-01-01T06:06:06+00:00",
+    Currency: "GBP",
+    AccountType: "Personal",
+    AccountSubType: "CurrentAccount",
+    Nickname: "Bills"
+  }, 
+  {
+    AccountId: "31820",
+    Status: "Enabled",
+    StatusUpdateDateTime: "2018-01-01T06:06:06+00:00",
+    Currency: "GBP",
+    AccountType: "Personal",
+    AccountSubType: "CurrentAccount",
+    Nickname: "Household"
+  }
+]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
