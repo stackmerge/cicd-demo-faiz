@@ -23,5 +23,5 @@ jobs:
         cache: maven
         
     - name: Build And Deploy with Maven
-      run: mvn -B package --file pom.xml -s settings.xml
+      run: mvn -B clean deploy -DmuleDeploy -Dapp.runtime=4.4.0 -Dcloudhub.application.name=sbi-bank-v1-sys-api-tst-apr2023 -Denvironment=Test -Dregion=us-east-2 -Dworkers=1 -DworkerType=MICRO -Dencrypt.key=mule12345 -Dmule.env=tst --file pom.xml -s settings.xml
 
