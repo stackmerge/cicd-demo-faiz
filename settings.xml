@@ -10,6 +10,12 @@
 			<username>~~~Client~~~</username>
 			<password>06e4e42333f04425b861e7b15a536661~?~1e0cbAB56f91457D902541B80Ad2a726</password>
 		</server>
+		
+		<server>
+			<id>anypoint-exchange-v3</id>
+			<username>~~~Client~~~</username>
+			<password>06e4e42333f04425b861e7b15a536661~?~1e0cbAB56f91457D902541B80Ad2a726</password>
+		</server>
 		<server>
 			<id>anypoint.credentials</id>
 			<username>mule-ace-academy</username>
